@@ -32,13 +32,13 @@ def menoSecundario(select=2):
 
         print("Ingrese el codigo del estudiante")
         
-        codigo = validarNumero()
+        codigo = int(validarNumero())
         x = validarEstudiante(codigo)
         if x == False:
             print("Ingrese el Nombre del estudiante")
-            nombre = input("")
+            nombre = validarSTR()
             print("ingrese la edad del estudiante")
-            edad = validarNumero()
+            edad = int(validarNumero())
             alumno(codigo,nombre,edad)
             print("Desea agregar otro alumno\n1. Sí\n2. No\n")
             select2 = validarNumero()
@@ -75,12 +75,12 @@ def menoSecundario(select=2):
             menuPrincipal()
     elif select == 3:
         print("ingrese el codigo del estudiante:\n")
-        id = validarNumero()
+        id = int(validarNumero())
         x = validarEstudiante(id)
         if x == True:
+            imprimirEstudiantes(id)
             notasFinal = calculoNotas(id)
-            print(f"|\t{student[id]['nombre']}\t|\t {student[id]['quiz']}\t|\t {student[id]['taller']}\t|\t {student[id]['parcial']}")
-            print(f"Nota final {notasFinal}")
+            print(f"Nota final {notasFinal}")            
         else:
             menuPrincipal()
         menuPrincipal()

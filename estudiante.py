@@ -1,3 +1,4 @@
+
 student = {}
 def alumno(codigo, nombre, edad):
     student[codigo]={"nombre": nombre,
@@ -13,6 +14,9 @@ def validarEstudiante(codigo):
     else:
         return False    
 
+def imprimirEstudiantes(id):
+    print(f"Nombre: {student[id]['nombre']}\nNotas de parcial: {student[id]['parcial']}\nNotas de Quiz: {student[id]['quiz']}\nNotas de talleres: {student[id]['taller']}")
+    
 
     
     
