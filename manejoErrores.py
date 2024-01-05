@@ -19,3 +19,9 @@ def validarSTR():
             break
         else:
             print("ingrese el nombre en letra")
+def rangoNotas(nota):
+
+    if nota>0 and nota<=5:
+        return True
+    else:
+        return False

@@ -3,12 +3,19 @@ from estudiante import *
 from notas import *
 from manejoErrores import *
 def menuNotas(select1, codigo):
-    if select1 == 1:
-    
+    comodin = codigo
+    if select1 == 1:    
         print("ingrese la nota del parcial\n")
         notaParcial = validarNumero()
-        agregarNotas(notaParcial,codigo,"parcial")
-        menoSecundario()
+        x = rangoNotas(notaParcial)
+        if x:
+            agregarNotas(notaParcial,codigo,"parcial")
+            menoSecundario()
+        else:
+             os.system('cls')
+             print("Ingresa un numero del 1 al 5")
+             menuNotas(select1=1, codigo=comodin)
+             
     elif select1 == 2:
        
         print("Ingrese la nota del quiz:\n")
@@ -40,7 +47,7 @@ def menoSecundario(select=2):
             print("ingrese la edad del estudiante")
             edad = int(validarNumero())
             alumno(codigo,nombre,edad)
-            print("Desea agregar otro alumno\n1. Sí\n2. No\n")
+            print("Desea agregar otro alumno\n1. Sí\n2. No")
             select2 = validarNumero()
             if select2 == 1:
                 menoSecundario(select2)
@@ -74,20 +81,23 @@ def menoSecundario(select=2):
         else:
             menuPrincipal()
     elif select == 3:
-        print("ingrese el codigo del estudiante:\n")
+        print("ingrese el codigo del estudiante o 0 para regresar al menu principal:")
         id = int(validarNumero())
-        x = validarEstudiante(id)
-        if x == True:
-            imprimirEstudiantes(id)
-            notasFinal = calculoNotas(id)
-            print(f"Nota final {notasFinal}")            
-        else:
-            menuPrincipal()
-        menuPrincipal()
+        if id != 0: 
+            x = validarEstudiante(id)
+            if x == True:
+                imprimirEstudiantes(id)
+                notasFinal = calculoNotas(id)
+                print(f"Nota final {notasFinal}")            
+            else:
+                print("Estudiante no existe")
+                menoSecundario(select=3)
+        else: menuPrincipal()
+        
     elif select == 4:
         clave = pasarMateria()
         print(f"{student[clave]['nombre']}")
-        menuPrincipal()
+        
     else:
         menuPrincipal()
 
